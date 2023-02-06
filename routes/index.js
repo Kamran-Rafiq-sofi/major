@@ -11,4 +11,8 @@ router.use('/users',require('./users'));
 // from likes.js
 router.use('/likes',require('./likes'));
 
+router.use('/singup',require('./signup'));
+
+router.use('/sigin',require('./signin'));
+
 module.exports=router;
