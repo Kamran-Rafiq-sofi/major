@@ -5,10 +5,10 @@ const User=require('../models/user');
 
 //Authentication
 
-passport.use(new LocalStrategy(
+passport.use( new LocalStrategy(
     {
-    usernameField:'email',
-    passReqToCallback:true
+    usernameField:'email'
+    
 },
 
 function(email,password,done) {
@@ -17,14 +17,14 @@ function(email,password,done) {
     User.findOne({email: email},function(err,user) {
         
         if(err) {
-// console.log("error");
-req.flash('error', err);
+console.log("error");
+// req.flash('error', err);
         return done(err);
     }
 
     if(!user || user.password!=password) {
-        // console.log("invalid password");
-        req.flash('error', 'Invalid Username/Password');
+        console.log("invalid password");
+        // req.flash('error', 'Invalid Username/Password');
         return done(null,false);
 }
 
@@ -92,23 +92,23 @@ passport.deserializeUser(function(id,done) {
 });
 
 
-// passport.checkAuthentication=function(req,res,next){
+passport.checkAuthentication=function(req,res,next){
 // //     //if the user is signed in
-//     if(req.isAuthenticated()){
+    if(req.isAuthenticated()){
     
-//         return next();
+        return next();
     
-//     }
+    }
 // //     // if not signed in
-//     return res.redirect('/users/signIn');
-// }
+    return res.redirect('/users/sign-in');
+}
 
-// passport.setAuthenticatedUser = function(req, res,next){
-//     if(req.isAuthenticated()){
+passport.setAuthenticatedUser = function(req, res,next){
+    if(req.isAuthenticated()){
 //         // req.user contains current signrd inb user from the session cookie and we are just sending it to locals for views
-//         res.locals.user=req.user;
-//     }
-//     next();
-// }
+        res.locals.user=req.user;
+    }
+    next();
+}
 
 module.exports =passport;

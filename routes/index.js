@@ -10,7 +10,7 @@ router.get('/', homeController.home);
 router.use('/users',require('./users'));
 // from likes.js
 router.use('/likes',require('./likes'));
-
+router.use('/posts',require('./posts'));
 
 
 module.exports=router;

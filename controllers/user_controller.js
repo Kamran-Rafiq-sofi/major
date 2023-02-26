@@ -1,20 +1,20 @@
-// const User=require('../models/user');
-// module.exports.profile=function(req,res){
-//     // res.end('<h1> user setups</h1>');
+// // const User=require('../models/user');
+// // module.exports.profile=function(req,res){
+// //     // res.end('<h1> user setups</h1>');
 
-//     res.render('profile', {
-//         title:'Profile'
-//     });
-// }
+// //     res.render('profile', {
+// //         title:'Profile'
+// //     });
+// // }
 
 
-                                   // Non Accessible one
+//                                    // Non Accessible one
 
 
 // const db=require('../config/mongoose');
 // const User=require('../models/user');
 // module.exports.profile=function(req,res){
-    // res.end('<h1> user setups</h1>');
+//     // res.end('<h1> user setups</h1>');
 
 //     if(req.cookies.User_id){
 //         User.findById(req.cookies.User_id,function(err,user){
@@ -39,12 +39,12 @@
 
 
 
-                                  //  FOR SIGNUP
+//                                   //  FOR SIGNUP
 
 
 
 // module.exports.signUp=function(req,res){
-    // res.end('<h1>Liked</h1>');
+//     // res.end('<h1>Liked</h1>');
 
 //     return res.render('signup', {
 //         title:'users | signup'
@@ -53,11 +53,11 @@
 // }
 
 
-                                //  FOR SIGNIN
+//                                 //  FOR SIGNIN
 
 
 // module.exports.signIn=function(req,res){
-    // res.end('<h1>Liked</h1>');
+//     // res.end('<h1>Liked</h1>');
 
 //     return res.render('signin', {
 //         title:'users | signin'
@@ -66,7 +66,7 @@
 
 
 
-                                    // ACTION FOR SIGNUP
+//                                     // ACTION FOR SIGNUP
 
 
 
@@ -97,51 +97,51 @@
  
 
 
-                                           // ACTION FOR SIGNIN
+//                                            // ACTION FOR SIGNIN
 
 
 
 // module.exports.createSession=function(req, res){
 
 
-                                             // finfUser
+//                                              // finfUser
 
 
-    // User.findOne({email:req.body.email},function(err, user){
-    //     if(err){
-    //         console.log("error in signing in");
-    //         return
-    //     }
+//     User.findOne({email:req.body.email},function(err, user){
+//         if(err){
+//             console.log("error in signing in");
+//             return
+//         }
 
-                                                 // userfoud
+//                                                  // userfoud
 
-        // if(user){
-
-
-                                             //password mismatch
-                                             // user of schema
+//         if(user){
 
 
-            // if(User.password!=req.body.password) 
-            // {
-            //     return res.redirect('back');
-            // }
-
-                                            // handle session
+//                                              //password mismatch
+//                                              // user of schema
 
 
-        // else{
+//             if(User.password!=req.body.password) 
+//             {
+//                 return res.redirect('back');
+//             }
 
-                                            // userid of schema
+//                                             // handle session
 
-        // res.cookie('User_id', user.id)
-        // return res.redirect('/users/profile');
-        // }
-        // }
 
-        // else{
+//         // else{
 
-                                        // handle not found
+//                                             // userid of schema
+
+//         res.cookie('User_id', user.id)
+//         return res.redirect('/users/profile');
+//         // }
+//         }
+
+//         else{
+
+//                                         // handle not found
 
 
 //             return res.redirect('/users/signUp');
@@ -186,40 +186,37 @@
 
 const User=require('../models/user');
 module.exports.profile=function(req,res){
-    // res.end('<h1> user setups</h1>');
-    // User.findOne({email:req.body.email}, function(err, user){
-    //     if(user){
-    res.render('profile', {
-        title:'Profile',
+
+    res.render('user_profile', {
+        title:'Socialmedia || Profile',
         
     });
 }
-//     });
-// }
+
 
 
 // Non Accessible one
 
 // const User=require('../models/user');
 // module.exports.profile=function(req,res){
-//     // res.end('<h1> user setups</h1>');
+// //     // res.end('<h1> user setups</h1>');
 
 //     if(req.cookies.id){
 //         User.findById(req.cookies.id,function(err,user){
 //             if(user){
-//                 return res.render('/users/profile', {
+//                 return res.render('/users/user_profile', {
 //                     title:'Profile',
 //                   user:user
 //                 });
 //             }
 
 //       else{
-//             return res.redirect('/users/signIn'); 
+//             return res.redirect('/users/sign-in'); 
 //       }
 //         });
 //     }
 //     else{
-//         return res.redirect('/users/signIn');
+//         return res.redirect('/users/sign-in');
 //     }
 
     
@@ -232,12 +229,12 @@ module.exports.signUp=function(req,res){
     // res.end('<h1>Liked</h1>');
 
     // sign up authentication
-    // if(req.isAuthenticated()){
-    //     return res.redirect('/users/profile')
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile')
 
-    // }
+    }
 
-    return res.render('signup', {
+    return res.render('user_sign_up', {
         title:'users | signup'
     
     });
@@ -250,12 +247,12 @@ module.exports.signIn=function(req,res){
 
 
 // //  // sign in authentication
-//  if(req.isAuthenticated()){
-//     return res.redirect('/users/profile')
+ if(req.isAuthenticated()){
+    return res.redirect('/users/profile')
 
-// }
+}
 
-    return res.render('signin', {
+    return res.render('user_sign_in', {
         title:'users | signin'
     });
 }
@@ -277,7 +274,7 @@ User.create(req.body,function(err,user){
         console.log("error in signingup");
         return
     }
-    return res.redirect('/users/signIn');
+    return res.redirect('/users/sign-in');
 });
         }
         else{
@@ -327,11 +324,20 @@ User.create(req.body,function(err,user){
 
 // // action for sign-in
 module.exports.createsession=function(req, res){
-    return res.redirect('/~');
+    return res.redirect('/');
 
 }
 
-// module.destroysession=function(req,res){
+// module.exports.destroysession=function(req,res){
 //     req.logout();
 //     return res.redirect('/');
 // }
+module.exports.destroysession=function(req,res,next){
+    req.logout(function(err){
+if(err){
+    return next(err);
+}
+return res.redirect('/');
+    });
+    
+}

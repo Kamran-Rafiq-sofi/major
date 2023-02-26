@@ -1,0 +1,9 @@
+#new_post_form {
+  background-color: bisque;
+}
+#new_post_form textarea {
+  border-radius: 10px;
+  border: 2px solid gray;
+}
+
+/*# sourceMappingURL=posts.css.map */

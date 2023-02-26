@@ -1,25 +1,20 @@
 // const express = require('express');
 // const router=express.Router();
-// const passport=require('passport');
+
 // const userController=require('../controllers/user_controller');
 // router.get('/profile',userController.profile);
 
-// // router.get('/profile',passport.checkAuthentication,userController.profile);
-
-// router.get('/signUp',userController.signUp);
 
 
-// router.get('/signIn',userController.signIn);
+// router.get('/sign-up',userController.signUp);
+
+
+// router.get('/sign-in',userController.signIn);
 
 // router.post('/create',userController.create);
 // router.post('/create-session',userController.createSession);
-// router.get('/Delete-Session',userController.DeleteSession);
-// router.post('/create_session',passport.authenticate(
-//     'local',
-//     {
-//         failureRedirect:'/users/signIn'
-//     }
-// ),userController.create_session);
+// // router.get('/Delete-Session',userController.DeleteSession);
+
 // module.exports = router;
 
 
@@ -28,31 +23,33 @@
 const express = require('express');
 const router=express.Router();
 const passport=require('passport');
-const PassportLocal=require('../config/passport-local-strategy');
+// const PassportLocal=require('../config/passport-local-strategy');
 const userController=require('../controllers/user_controller');
 
-
-// // router.get('/profile',PassportLocal.checkAuthentication,userController.profile);
-router.get('/profile',userController.profile);
-
-router.get('/signUp',userController.signUp);
+ router.get('/profile',passport.checkAuthentication,userController.profile);
+// router.get('/profile',userController.profile);
 
 
-router.get('/signIn',userController.signIn);
+router.get('/sign-up',userController.signUp);
+
+router.get('/sign-in',userController.signIn);
 
 router.post('/create',userController.create);
 // router.post('/create-session',userController.createSession);
 
-router.post('/create-session',PassportLocal.authenticate(
+router.post('/create-session',passport.authenticate(
     'local',
     {
-        failureRedirect:'/users/signIn'
+        failureRedirect:'/users/sign-in'
         
-    }
+    },
     
 ),userController.createsession);
-// router.get('/signout', userController.destroysession);
+router.get('/sign-out', userController.destroysession);
 module.exports = router;
+
+
+
 
 
 
