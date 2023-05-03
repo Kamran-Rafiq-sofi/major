@@ -1,12 +1,19 @@
+<base href="/">
+<link rel="stylesheet" href='/css/sign_in_up_page-1fecfb8944.css'> 
+
+
 <form action="/users/create-session" method="POST" >
 
 
-    
-    <input type="email"  name="email" placeholder="write your email" required/><br>
+    <label for="sigin_email">Email</label><br>
+    <input type="email" id="sigin_email" name="email" placeholder="write your email" required/><br>
 
-
-    <input type="password"  name="password" placeholder="write your password" requirede/><br>
+    <label for="sigin_password">password</label><br>
+    <input type="password" id="sigin_password" name="password" placeholder="write your password" requirede/><br>
 
     <input type="submit" value="Sign In">
     
 </form>
+<p>
+    <a href="/users/auth/google">Google SignIn/SignUp</a>
+</p>

@@ -1,12 +1,12 @@
 <!-- <!DOCTYPE html>
-<html lang="en">
+ <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=title%></title>
 </head>
-<body> -->
+<body>  -->
 
 
 
@@ -59,13 +59,31 @@
 
 
      <%- include('_header');%> -->
-    <form action="/users/Delete-Session" method="GET">
+    <!-- <form action="/users/Delete-Session" method="GET">
         <button type="submit">SignOuts</button>
-    </form>
+    </form> -->
     <p><h1>this is profile////<%=title%>  </h1></p>
- <p><%=user.name%></p>
- <p><%=user.email%></p>
+    <% if(user.id==profile_user.id){%>
+    <img src="<%=user.avatar%>" alt="<%=user.name%>" width="100">
+  
+        
+        <form action="/users/update/<%=profile_user.id%>" method="POST" enctype="multipart/form-data">
+<input type="text" name="name" placeholder="write your name" value="<%=profile_user.name%>" requird>
+<input type="email" name="email" placeholder="write your email" value="<%=profile_user.email%>" requird>
+<input type="file" name="avatar" placeholder="profile photo">
+<input type="submit" value="update">
 
+
+        </form>
+
+        <%}else{%>
+            <p><%=profile_user.name%></p>
+            <p><%=profile_user.email%></p>
+           
+
+        
+        <%}%>
+ 
     <!-- <%- include('_footer');%> 
     
     <footer>

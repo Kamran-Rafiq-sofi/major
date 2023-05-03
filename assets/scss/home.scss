@@ -1,3 +1,21 @@
 body{
-    background-color: blue;
+    background-color: beige;
+    #home_controller{
+        display :flex;
+        
+        flex-direction: column;
+        #field_posts{
+        width:70%;
+        padding:10px;
+       }
+        #user_friends{
+            width: 30%;
+            padding: 30px;
+            border-left: 1px solid gray;
+            height: 100%;
+            display:flex;
+            flex-direction: column;
+       }
+
+    }
 }

@@ -1,0 +1,21 @@
+{
+  "css/Layouts.css": "css/Layouts-8aa1f2196c.css",
+  "css/chat.css": "css/chat-4a270390f5.css",
+  "css/chat_box.css": "css/chat_box-096e1f72ea.css",
+  "css/color.css": "css/color-ca16afad2d.css",
+  "css/footer.css": "css/footer-9ce6afeef9.css",
+  "css/header.css": "css/header-df2ec95344.css",
+  "css/home.css": "css/home-d16c0c41fa.css",
+  "css/layout.css": "css/layout-ec839f6336.css",
+  "css/posts.css": "css/posts-1123f78fb5.css",
+  "css/profile.css": "css/profile-df50961bf0.css",
+  "css/sign.css": "css/sign-58a3bf588d.css",
+  "css/sign_in_up_page.css": "css/sign_in_up_page-1fecfb8944.css",
+  "css/signup.css": "css/signup-a8409cfbcf.css",
+  "images/test.png": "images/test-2af6d5f481.png",
+  "js/chat_engine.js": "js/chat_engine-06731659cc.js",
+  "js/home_post_comments.js": "js/home_post_comments-87794b7f85.js",
+  "js/home_posts.js": "js/home_posts-c9915543ee.js",
+  "js/layout.js": "js/layout-d41d8cd98f.js",
+  "js/toggle_likes.js": "js/toggle_likes-0e3d81481c.js"
+}

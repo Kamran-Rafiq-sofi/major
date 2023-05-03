@@ -184,15 +184,85 @@
 
 
 
+// const User=require('../models/user');
+// module.exports.profile=function(req,res){
+
+//     res.render('user_profile', {
+//         title:'Socialmedia || Profile',
+        
+//     });
+// }
+
+
+
+const { request } = require('express');
 const User=require('../models/user');
+const fs=require('fs');
+const path=require('path');
 module.exports.profile=function(req,res){
 
-    res.render('user_profile', {
-        title:'Socialmedia || Profile',
+    User.findById(req.params.id,function(err,user){
+
+        res.render('user_profile', {
+            title:'Socialmedia || Profile',
+            profile_user:user
+    });
+
         
+    
     });
 }
 
+// module.exports.update=function(req,res){
+
+//     if(req.user.id==req.params.id){
+//         User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+//             return res.redirect('back');
+//          });
+//     }
+//     else{
+//         return res.status(401).send('Unauthorised');
+//     }
+// }
+
+
+
+module.exports.update=async function(req,res){
+
+    if(req.user.id==req.params.id){
+        try{
+       let user=await User.findById(req.params.id);
+       User.uploadedAvatar(req,res, function(err){
+        if(err){
+            console.log("*****error******",err);
+        }
+        user.name=req.body.name;
+        user.email=req.body.email;
+        if(req.file){
+            if(user.avatar){
+                fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+            }
+            user.avatar=User.avatarPath+ '/'+ req.file.filename;
+        }
+        user.save();
+        return res.redirect('back');
+        console.log(req.file);
+
+       });
+    }
+    catch(err){
+        req.flash('error', err);
+        return res.redirect('back');
+    }
+    //         return res.redirect('back');
+    //      });
+         
+     }
+    else{
+        req.flash('error','Unauthorised')
+        return res.status(401).send('Unauthorised');
+    }
+}
 
 
 // Non Accessible one
@@ -230,7 +300,8 @@ module.exports.signUp=function(req,res){
 
     // sign up authentication
     if(req.isAuthenticated()){
-        return res.redirect('/users/profile')
+        return res.redirect('/users/profile/req.params.id')
+        // return res.redirect('back')
 
     }
 
@@ -248,7 +319,8 @@ module.exports.signIn=function(req,res){
 
 // //  // sign in authentication
  if(req.isAuthenticated()){
-    return res.redirect('/users/profile')
+    return res.redirect('/users/profile/req.body')
+    // return res.redirect('back')
 
 }
 
@@ -324,6 +396,7 @@ User.create(req.body,function(err,user){
 
 // // action for sign-in
 module.exports.createsession=function(req, res){
+    req.flash('success',"logged in successfully");
     return res.redirect('/');
 
 }
@@ -337,7 +410,9 @@ module.exports.destroysession=function(req,res,next){
 if(err){
     return next(err);
 }
+req.flash('success',"logged out successfully");
 return res.redirect('/');
     });
+    
     
 }

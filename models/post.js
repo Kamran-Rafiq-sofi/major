@@ -8,7 +8,22 @@ const postSchema=new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
-    }
+    },
+    // array id of comments so its loaded alongside posts
+    comments:
+   [
+        {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Comment'
+        }
+    ],
+    likes:
+    [
+         {
+         type:mongoose.Schema.Types.ObjectId,
+         ref:'Like'
+         }
+     ]
 
 },
 {

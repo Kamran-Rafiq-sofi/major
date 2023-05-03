@@ -1,0 +1,40 @@
+    <!-- <base href="/">
+
+<link rel="stylesheet" href="/css/chat_box-096e1f72ea.css" /> -->
+
+
+<!-- <link rel="stylesheet" href="/css/chat.css" /> -->
+<link rel="stylesheet" href="<%=assetPath('css/chat.css')%>">
+
+
+<!-- <% if(locals.user){%>
+<div id="chat" >
+<form  id="chat_box">
+    <input type="text" required/>
+    <input type="submit" value="send" />
+</form>
+</div>
+<%}%> -->
+
+<!-- style="border:2px solid black; border-radius: 10px; height:23em; width:15.5em; justify-content: right; margin-left: 64.5em; margin-top:5em; display:flex;align-items: flex-end;" -->
+<!-- style="padding-right:5px" -->
+
+
+
+<%if (locals.user){%>
+    <div id="user-chat-box">
+        <ul id="chat-messages-list">
+            <li class="other-message">
+                <span>Other Message</span>
+            </li>
+            <li class="self-message">
+                <span>Self Message</span>
+            </li>
+        </ul>
+    
+    <div id="chat-message-input-container">
+        <input id="chat-message-input"  placeholder="Type messages here...">
+        <button id="send-message">send</button>
+    </div>
+</div>
+<%}%>
