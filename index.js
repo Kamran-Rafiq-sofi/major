@@ -70,7 +70,7 @@ const passportJWT = require('./config/passport-jwt-strategy');
 const passportGoogle = require('./config/passport-google-oauth2Strategy');
 const MongoStore = require('connect-mongo');
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 
 // app.use(express.static('./assets'));
@@ -143,3 +143,10 @@ app.listen(port, function (err) {
 
     console.log(`successfully running on :${port}`);
 });
+
+// ssh -i ~/Downloads/socialmedia_production.pem  ubuntu@ec2-34-238-255-83.compute-1.amazonaws.com
+//  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+// export NVM_DIR="$HOME/.nvm"
+// [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+// [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
