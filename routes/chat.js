@@ -46,3 +46,14 @@
 
 // module.exports = router;
 
+
+
+const express = require('express');
+const router = express.Router();
+
+const messageController = require('../controllers/message_controller');
+
+router.post('/message/create', messageController.create);
+
+module.exports = router;
+
